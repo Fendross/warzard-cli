@@ -11,6 +11,7 @@ fn main() {
     println!("{str1}\n{str2}");
 }
 
+// TODO Store lore into a JSON or YAML, using serde crate to serialize/deserialize it.
 fn get_lore_hash_set() -> HashMap<i16, String> {
     let mut lore = HashMap::new();
 
