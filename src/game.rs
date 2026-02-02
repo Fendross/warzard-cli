@@ -1,10 +1,33 @@
+use crate::character::Character;
+
+/// Tha main game container. It is composed of:
+/// 
+///     character -> a [`Character`] instance
+///     lore -> a Vec<String> of lore phrases
 pub struct Game {
+    pub character: Character,
+
     pub lore: Vec<String>,
 }
 
 impl Game {
     pub fn new() -> Self {
-        Self { lore: build_lore() }
+        Self { 
+            character: Character::new("Vib".to_string(), 20, 5, 0),
+            lore: build_lore()
+        }
+    }
+
+    pub fn get_character_hp(&self) -> u32 {
+        self.character.get_hp()
+    }
+
+    pub fn get_character_rp(&self) -> u32 {
+        self.character.get_rp()
+    }
+
+    pub fn get_character_xp(&self) -> u32 {
+        self.character.get_xp()
     }
 
     pub fn print_lore(&self, i: usize) {
