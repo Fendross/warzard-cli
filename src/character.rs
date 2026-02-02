@@ -37,3 +37,18 @@ impl Character {
         self.xp
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_reading_character_stats() {
+        let char = Character::new("test".to_string(), 1, 2, 3);
+
+        assert_eq!("test".to_string(), char.name);
+        assert_eq!(1, char.get_hp());
+        assert_eq!(2, char.get_rp());
+        assert_eq!(3, char.get_xp());
+    }
+}
