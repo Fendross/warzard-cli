@@ -1,5 +1,5 @@
 pub struct Game {
-    lore: Vec<String>,
+    pub lore: Vec<String>,
 }
 
 impl Game {
@@ -7,11 +7,19 @@ impl Game {
         Self { lore: build_lore() }
     }
 
-    pub fn read_lore(&self, i: usize) {
+    pub fn print_lore(&self, i: usize) {
         if let Some(phrase) = self.lore.get(i) {
             println!("{phrase}");
         } else {
             println!("Lore item does not exist.");
+        }
+    }
+
+    #[cfg(test)]
+    pub fn get_lore_message(&self, id: usize) -> String {
+        match self.lore.get(id) {
+            Some(text) => text.clone(),
+            None => "Lore item does not exist.".to_string(),
         }
     }
 }
@@ -23,4 +31,30 @@ fn build_lore() -> Vec<String> {
     lore.push("Game module seems better.".to_string());
 
     lore
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_build_lore() {
+        let game: Game = Game::new();
+        assert_eq!(3, game.lore.len());
+    }
+
+    #[test]
+    fn test_read_lore() {
+        let game: Game = Game::new();
+        assert_eq!(
+            "In a world where magic is everything, Vib was born with nothing.".to_string(), 
+            game.get_lore_message(0)
+        );
+    }
+
+    #[test]
+    fn test_read_lore_nonexistent() {
+        let game: Game = Game::new();
+        assert_eq!("Lore item does not exist.".to_string(), game.get_lore_message(999));
+    }
 }
