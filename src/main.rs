@@ -1,15 +1,13 @@
-mod lore;
+use game::Game;
 
-use std::collections::HashMap;
+mod game;
 
 fn main() {
     println!("Warzard - He that does not wield magic in a magic world");
 
-    // Init lore data.
-    let lore: HashMap<i16, String> = lore::init();
-    
-    let str1 = lore::get_lore_from_index(&lore, 1);
-    let str2 = lore::get_lore_from_index(&lore, 2);
+    let game = Game::new();
 
-    println!("{}\n{}", str1.unwrap(), str2.unwrap());
+    game.read_lore(0);
+    game.read_lore(1);
+    game.read_lore(2);
 }
