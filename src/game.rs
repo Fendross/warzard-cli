@@ -18,18 +18,6 @@ impl Game {
         }
     }
 
-    pub fn get_character_hp(&self) -> u32 {
-        self.character.get_hp()
-    }
-
-    pub fn get_character_rp(&self) -> u32 {
-        self.character.get_rp()
-    }
-
-    pub fn get_character_xp(&self) -> u32 {
-        self.character.get_xp()
-    }
-
     pub fn print_lore(&self, i: usize) {
         if let Some(phrase) = self.lore.get(i) {
             println!("{phrase}");
