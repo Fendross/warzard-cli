@@ -32,6 +32,14 @@ impl Character {
     pub fn gain_xp(&mut self, _amount: u32) {
         self.xp += _amount;
     }
+
+    pub fn level_up(&mut self) {
+        self.level += 1;
+
+        self.xp = 0;
+        self.max_hp += 5;
+        self.max_rp += 2;
+    }
 }
 
 #[cfg(test)]
@@ -56,5 +64,15 @@ mod tests {
         assert_eq!(3, char.xp);
         char.gain_xp(10);
         assert_eq!(13, char.xp);
+    }
+
+    #[test]
+    fn test_level_up() {
+        let mut char = Character::new("test".to_string(), 1, 2, 3);
+        char.level_up();
+
+        assert_eq!(0, char.xp);
+        assert_eq!(6, char.max_hp);
+        assert_eq!(4, char.max_rp);
     }
 }

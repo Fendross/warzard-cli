@@ -24,4 +24,8 @@ fn main() {
     let gained_xp: u32 = 10;
     game.character.gain_xp(gained_xp);
     println!("{} gained {} XP, now it has a total of: {} XP.", game.character.name, gained_xp, game.character.xp);
+
+    // Simulate level up.
+    game.character.level_up();
+    println!("{} has leveled up! His level is now: {}.", game.character.name, game.character.level);
 }
