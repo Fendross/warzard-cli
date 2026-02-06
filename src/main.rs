@@ -5,11 +5,11 @@ mod character;
 
 fn main() {
     let mut game = Game::new();
-    let mut lore_index = 0;
+    let mut idx_dialogue = 0;
 
-    game.print_lore(lore_index);
-    lore_index += 1;
-    println!("Lore index value: {}", lore_index);
+    game.print_dialogue(idx_dialogue);
+    idx_dialogue += 1;
+    println!("Lore index value: {}", idx_dialogue);
 
     println!(
         "{} has been initialized! Our beloved non-hero! It starts out with: ", 
