@@ -6,6 +6,7 @@ use std::fs;
 struct DialogueData {
     intro: Vec<String>,
     wandville: Vec<String>,
+    hareena: Vec<String>,
 }
 
 impl DialogueData {
@@ -19,11 +20,11 @@ impl DialogueData {
 /// Tha main game container. It is composed of:
 /// 
 ///     character -> a [`Character`] instance
-///     lore -> a Vec<String> of lore phrases
+///     dialogues -> a series of Vec<String>s of dialogues
 pub struct Game {
     pub character: Character,
 
-    pub dialogues: DialogueData,
+    dialogues: DialogueData,
 }
 
 impl Game {
