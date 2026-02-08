@@ -7,6 +7,7 @@ struct DialogueData {
     intro: Vec<String>,
     wandville: Vec<String>,
     hareena: Vec<String>,
+    training: Vec<String>,
 }
 
 impl DialogueData {

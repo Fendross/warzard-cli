@@ -1,13 +1,15 @@
 {
     "intro": [
         "In a world where magic is everything, Vib was born with nothing.",
-        "Placeholder",
-        "Placeholder"
+        "The story should continue, but it's being written."
     ],
     "wandville": [
-        "Welcome to Wandville!"
+        "Welcome to Wandville! Remember, you are pretty much the most hated person in here..."
     ],
     "hareena": [
-        "Enter the Hareena!"
+        "Enter the Hareena! Time to shine!"
+    ],
+    "training": [
+        "In your hideout you're safe... Unless you are looking to get better at fighting."
     ]
 }
