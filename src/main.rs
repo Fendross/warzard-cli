@@ -2,10 +2,9 @@ use game::Game;
 
 mod game;
 mod dialogue;
+mod location;
 
 fn main() {
-    println!("Starting from scratch after a design session!");
-
     let mut game = Game::new();
     game.run();
 }
