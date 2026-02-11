@@ -58,3 +58,22 @@ fn init_terminal() {
 fn clear_terminal() {
     print!("\x1b[H\x1b[J");
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_has_visited() {
+        let game: Game = Game::new();
+        assert!(game.has_visited(&Location::default()));
+    }
+
+    #[test]
+    fn test_update_location() {
+        let mut game: Game = Game::new();
+        let location = Location::Hareena;
+        game.update_location(location);
+        assert!(game.has_visited(&location));
+    }
+}
