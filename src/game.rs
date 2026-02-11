@@ -14,7 +14,7 @@ impl Game {
             dialogues: Dialogue::load_dialogues().unwrap(),
 
             current_location: Location::default(),
-            visited_locations: Vec::new(),
+            visited_locations: vec![Location::default()],
         }
     }
 
@@ -29,11 +29,6 @@ impl Game {
         println!("Player currently in: {:?}.", self.current_location);
         self.update_location(Location::Hareena);
         println!("Player currently in: {:?}.", self.current_location);
-
-        println!("Has visited Hareena? {}", self.has_visited(&Location::Hareena));
-
-        self.update_location(Location::Hideout);
-        println!("Has visited Hideout? {}", self.has_visited(&Location::Hideout));
     }
 
     fn has_visited(&self, location: &Location) -> bool {
@@ -66,7 +61,10 @@ mod tests {
     #[test]
     fn test_has_visited() {
         let game: Game = Game::new();
-        assert!(game.has_visited(&Location::default()));
+        let location = Location::default();
+
+        assert_eq!(game.current_location, location);
+        assert!(game.has_visited(&location));
     }
 
     #[test]
@@ -74,6 +72,7 @@ mod tests {
         let mut game: Game = Game::new();
         let location = Location::Hareena;
         game.update_location(location);
+
         assert!(game.has_visited(&location));
     }
 }
