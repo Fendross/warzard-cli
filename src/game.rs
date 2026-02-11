@@ -1,18 +1,21 @@
+use std::any;
+
 use crate::dialogue::Dialogue;
 use crate::location::Location;
 
 pub struct Game {
     pub dialogues: Dialogue,
+
     pub current_location: Location,
     pub visited_locations: Vec<Location>,
 }
 
 impl Game {
     pub fn new() -> Game {
-        // User starts directly in the Hareena, for the tutorial fight.
         Self {
             dialogues: Dialogue::load_dialogues().unwrap(),
-            current_location: Location::Hareena,
+
+            current_location: Location::default(),
             visited_locations: Vec::new(),
         }
     }
@@ -25,8 +28,26 @@ impl Game {
             println!("{}", dialogue);
         }
 
-        self.visited_locations.push(self.current_location.clone());
         println!("Player currently in: {:?}.", self.current_location);
+        self.update_location(Location::Hareena);
+        println!("Player currently in: {:?}.", self.current_location);
+
+        println!("Has visited Hareena? {}", self.has_visited(&Location::Hareena));
+
+        self.update_location(Location::Hideout);
+        println!("Has visited Hideout? {}", self.has_visited(&Location::Hideout));
+    }
+
+    fn has_visited(&self, location: &Location) -> bool {
+        self.visited_locations.contains(location)
+    }
+
+    // Borrows to check, owns to store.
+    fn update_location(&mut self, location: Location) {
+        if !self.has_visited(&location) {
+            self.visited_locations.push(location);
+        }
+        self.current_location = location
     }
 }
 

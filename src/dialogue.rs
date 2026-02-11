@@ -1,7 +1,7 @@
 use serde::Deserialize;
 use std::fs;
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize)]
 pub struct Dialogue {
     pub intro: Vec<String>,
     pub wandville: Vec<String>,
