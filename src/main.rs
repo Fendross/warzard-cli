@@ -1,6 +1,7 @@
 use game::Game;
 
 mod game;
+mod hero;
 mod dialogue;
 mod location;
 

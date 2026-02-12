@@ -1,7 +1,10 @@
 use crate::dialogue::Dialogue;
 use crate::location::Location;
+use crate::hero::Hero;
 
 pub struct Game {
+    pub hero: Hero,
+
     pub dialogues: Dialogue,
 
     pub current_location: Location,
@@ -11,6 +14,8 @@ pub struct Game {
 impl Game {
     pub fn new() -> Game {
         Self {
+            hero: Hero::new(),
+
             dialogues: Dialogue::load_dialogues().unwrap(),
 
             current_location: Location::default(),
@@ -19,23 +24,25 @@ impl Game {
     }
 
     pub fn run(&mut self) {
-        init_terminal();
+        self.init_game();
+    }
 
-        // Intro dialogues roll.
-        for dialogue in &self.dialogues.intro {
-            println!("{}", dialogue);
-        }
+    /// At the start of the game, clears the terminal and rolls the intro dialogues.
+    /// Also, sets the location of the player in the Hareena.
+    fn init_game(&mut self) {
+        clear_terminal();
 
-        println!("Player currently in: {:?}.", self.current_location);
+        print_dialogues(&self.dialogues.intro);
         self.update_location(Location::Hareena);
-        println!("Player currently in: {:?}.", self.current_location);
+
+        println!("\n=== Warzard - Conquer your future ===\n");
+        print_dialogues(&self.dialogues.hareena);
     }
 
     fn has_visited(&self, location: &Location) -> bool {
         self.visited_locations.contains(location)
     }
 
-    // Borrows to check, owns to store.
     fn update_location(&mut self, location: Location) {
         if !self.has_visited(&location) {
             self.visited_locations.push(location);
@@ -44,14 +51,15 @@ impl Game {
     }
 }
 
-// CLI Utils.
-fn init_terminal() {
-    clear_terminal();
-    println!("=== Warzard - Conquer your future ===\n");
-}
-
+// Utils.
 fn clear_terminal() {
     print!("\x1b[H\x1b[J");
+}
+
+pub fn print_dialogues(lines: &[String]) {
+    for line in lines {
+        println!("{}", line);
+    }
 }
 
 #[cfg(test)]
