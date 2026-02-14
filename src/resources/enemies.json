@@ -1,0 +1,112 @@
+[
+  {
+    "class": "Fire Sprite",
+    "rarity": "Common",
+    "level": 1,
+    "total_hp": 15,
+    "current_hp": 15,
+    "total_mp": 10,
+    "current_mp": 10,
+    "speed": 12
+  },
+  {
+    "class": "Water Sprite",
+    "rarity": "Common",
+    "level": 1,
+    "total_hp": 20,
+    "current_hp": 20,
+    "total_mp": 15,
+    "current_mp": 15,
+    "speed": 8
+  },
+  {
+    "class": "Earth Sprite",
+    "rarity": "Common",
+    "level": 1,
+    "total_hp": 30,
+    "current_hp": 30,
+    "total_mp": 5,
+    "current_mp": 5,
+    "speed": 4
+  },
+  {
+    "class": "Wind Sprite",
+    "rarity": "Common",
+    "level": 1,
+    "total_hp": 12,
+    "current_hp": 12,
+    "total_mp": 20,
+    "current_mp": 20,
+    "speed": 18
+  },
+  {
+    "class": "Scholar Mage",
+    "rarity": "Uncommon",
+    "level": 5,
+    "total_hp": 45,
+    "current_hp": 45,
+    "total_mp": 60,
+    "current_mp": 60,
+    "speed": 10
+  },
+  {
+    "class": "Spiderloo",
+    "rarity": "Common",
+    "level": 3,
+    "total_hp": 25,
+    "current_hp": 25,
+    "total_mp": 0,
+    "current_mp": 0,
+    "speed": 15
+  },
+  {
+    "class": "Baby Ent",
+    "rarity": "Common",
+    "level": 2,
+    "total_hp": 40,
+    "current_hp": 40,
+    "total_mp": 10,
+    "current_mp": 10,
+    "speed": 2
+  },
+  {
+    "class": "Centaur",
+    "rarity": "Uncommon",
+    "level": 8,
+    "total_hp": 85,
+    "current_hp": 85,
+    "total_mp": 20,
+    "current_mp": 20,
+    "speed": 25
+  },
+  {
+    "class": "Druid",
+    "rarity": "Rare",
+    "level": 12,
+    "total_hp": 110,
+    "current_hp": 110,
+    "total_mp": 100,
+    "current_mp": 100,
+    "speed": 14
+  },
+  {
+    "class": "Adult Mage",
+    "rarity": "Rare",
+    "level": 15,
+    "total_hp": 130,
+    "current_hp": 130,
+    "total_mp": 200,
+    "current_mp": 200,
+    "speed": 16
+  },
+  {
+    "class": "Gahler",
+    "rarity": "Legendary",
+    "level": 30,
+    "total_hp": 1500,
+    "current_hp": 1500,
+    "total_mp": 500,
+    "current_mp": 500,
+    "speed": 40
+  }
+]

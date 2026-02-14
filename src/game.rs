@@ -1,9 +1,13 @@
 use crate::dialogue::Dialogue;
 use crate::location::Location;
 use crate::hero::Hero;
+use crate::enemy::Enemy;
+
+use std::fs;
 
 pub struct Game {
     pub hero: Hero,
+    pub enemies: Vec<Enemy>,
 
     pub dialogues: Dialogue,
 
@@ -15,16 +19,21 @@ impl Game {
     pub fn new() -> Game {
         Self {
             hero: Hero::new(),
+            enemies: load_enemies(),
 
-            dialogues: Dialogue::load_dialogues().unwrap(),
+            dialogues: load_dialogues().unwrap(),
 
             current_location: Location::default(),
             visited_locations: vec![Location::default()],
         }
     }
 
-    pub fn run(&mut self) {
+    pub fn start(&mut self) {
         self.init_game();
+
+        println!("Our hero: {:?}", self.hero);
+        println!("First enemy: {:?}", self.enemies.get(0).as_slice());
+        println!("Number of enemies stored: {:?}", self.enemies.len());
     }
 
     /// At the start of the game, clears the terminal and rolls the intro dialogues.
@@ -49,6 +58,18 @@ impl Game {
         }
         self.current_location = location
     }
+}
+
+// Data loaders.
+pub fn load_dialogues() -> Result<Dialogue, Box<dyn std::error::Error>> {
+    let data = fs::read_to_string("src/resources/dialogues.json")?;
+    let dialogues = serde_json::from_str(&data)?;
+    Ok(dialogues)
+}
+
+pub fn load_enemies() -> Vec<Enemy> {
+    let data = std::fs::read_to_string("src/resources/enemies.json").expect("File not found");
+    serde_json::from_str(&data).expect("Error parsing JSON")
 }
 
 // Utils.

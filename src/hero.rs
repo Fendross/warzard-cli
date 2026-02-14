@@ -5,6 +5,7 @@ const STARTING_RP: i16 = 5;
 const STARTING_SPEED: i16 = 4;
 const STARTING_GOLD: i16 = 100;
 
+#[derive(Debug)]
 pub struct Hero {
     pub name: String,
     pub class: String, // TODO Make this a Class type.
@@ -42,7 +43,7 @@ impl Hero {
         }
     }
 
-    /// Currently ignores death of Hero.
+    /// Currently ignores death.
     pub fn take_damage(&mut self, dmg: i16) {
         self.current_hp -= dmg;
     }
