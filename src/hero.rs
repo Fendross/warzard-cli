@@ -2,6 +2,7 @@ const STARTING_LEVEL: i8 = 1;
 const STARTING_XP: i16 = 0;
 const STARTING_HP: i16 = 10;
 const STARTING_RP: i16 = 5;
+const STARTING_SPEED: i16 = 4;
 const STARTING_GOLD: i16 = 100;
 
 pub struct Hero {
@@ -15,6 +16,7 @@ pub struct Hero {
     pub current_hp: i16,
     pub total_rp: i16,
     pub current_rp: i16,
+    pub speed: i16,
 
     pub equip: String, // TODO Make this an Equipment type.
     pub gold: i16,
@@ -33,6 +35,7 @@ impl Hero {
             current_hp: STARTING_HP,
             total_rp: STARTING_RP,
             current_rp: STARTING_RP,
+            speed: STARTING_SPEED,
 
             equip: String::from("Basic"), // TODO Make this an Equipment type.
             gold: STARTING_GOLD,
