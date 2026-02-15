@@ -1,6 +1,7 @@
 const STARTING_LEVEL: i8 = 1;
 const STARTING_XP: i16 = 0;
-const STARTING_HP: i16 = 10;
+const STARTING_ATK: i16 = 10;
+const STARTING_HP: i16 = 20;
 const STARTING_RP: i16 = 5;
 const STARTING_SPEED: i16 = 4;
 const STARTING_GOLD: i16 = 100;
@@ -13,6 +14,7 @@ pub struct Hero {
     pub level: i8,
     xp: i16,
 
+    pub atk: i16,
     pub total_hp: i16,
     pub current_hp: i16,
     pub total_rp: i16,
@@ -32,6 +34,7 @@ impl Hero {
             level: STARTING_LEVEL,
             xp: STARTING_XP,
 
+            atk: STARTING_ATK,
             total_hp: STARTING_HP,
             current_hp: STARTING_HP,
             total_rp: STARTING_RP,

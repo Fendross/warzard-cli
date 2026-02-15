@@ -30,10 +30,13 @@ impl Game {
 
     pub fn start(&mut self) {
         self.init_game();
-
-        println!("Our hero: {:?}", self.hero);
-        println!("First enemy: {:?}", self.enemies.get(0).as_slice());
-        println!("Number of enemies stored: {:?}", self.enemies.len());
+        let mut tutorial_enemy = self.enemies[0].clone(); // Fire sprite.
+        let won = self.run_battle(&mut tutorial_enemy);
+        if won {
+            println!("Vib won its first battle!");
+        } else {
+            println!("Vib lost and died!");
+        }
     }
 
     /// At the start of the game, clears the terminal and rolls the intro dialogues.
@@ -46,6 +49,37 @@ impl Game {
 
         println!("\n=== Warzard - Conquer your future ===\n");
         print_dialogues(&self.dialogues.hareena);
+    }
+
+    fn run_battle(&mut self, enemy: &mut Enemy) -> bool {
+        loop {
+            let would_hero_die: bool = (self.hero.current_hp - enemy.atk) < 0;
+            let would_enemy_die: bool = (enemy.current_hp - self.hero.atk) < 0;
+
+            if self.hero.speed > enemy.speed {
+                if would_enemy_die {
+                    break
+                } else if would_hero_die {
+                    enemy.take_damage(self.hero.atk);
+                    return false
+                } else {
+                    enemy.take_damage(self.hero.atk);
+                    self.hero.take_damage(enemy.atk);
+                }
+            } else {
+                if would_hero_die {
+                    return false
+                } else if would_enemy_die {
+                    self.hero.take_damage(enemy.atk);
+                    break
+                } else {
+                    self.hero.take_damage(enemy.atk);
+                    enemy.take_damage(self.hero.atk);
+                }
+            }
+            println!("This turn was not the final one. Hero HP: {}, Enemy HP: {}", self.hero.current_hp, enemy.current_hp);
+        }
+        true
     }
 
     fn has_visited(&self, location: &Location) -> bool {

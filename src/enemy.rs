@@ -1,17 +1,19 @@
 use serde::Deserialize;
 
 const STARTING_LEVEL: i8 = 1;
+const STARTING_ATK: i16 = 10;
 const STARTING_HP: i16 = 10;
 const STARTING_MP: i16 = 5;
 const STARTING_SPEED: i16 = 4;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Enemy {
     pub class: String, // TODO Make this a Class type.
     pub rarity: String,
 
     pub level: i8,
 
+    pub atk: i16,
     pub total_hp: i16,
     pub current_hp: i16,
     pub total_mp: i16,
@@ -28,6 +30,7 @@ impl Enemy {
 
             level: STARTING_LEVEL,
 
+            atk: STARTING_ATK,
             total_hp: STARTING_HP,
             current_hp: STARTING_HP,
             total_mp: STARTING_MP,
